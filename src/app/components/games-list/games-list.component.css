@@ -1,8 +1,35 @@
-body {
-    margin-left: 5%;
-    margin-right: 5%;
+table {
+  background-color: gray;
+  
 }
 
-h2 {
-    text-align: center;
+th {
+  color: white;
+}
+td {
+  color: white;
+}
+body {
+  background-color: pink;
+}
+
+button {
+  background-color: blue;
+  color: white;
+}
+
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+}
+
+.button-container{
+  margin-left: 10%;
+  margin-top: 15px;
+}
+
+.title-group{
+  text-align: center;
+  margin-top: 20px;
 }

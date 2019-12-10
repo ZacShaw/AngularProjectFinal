@@ -14,6 +14,7 @@ import {
 })
 export class ApiService {
   endpoint: string = "http://localhost:4000/api";
+  endpointgames: string = "http://localhost:4000/games";
   endpointAdmin: string = "http://localhost:4000/api-admin";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
@@ -55,7 +56,7 @@ export class ApiService {
     return this.http.delete(API_URL).pipe(catchError(this.errorMgmt));
   }
 
-  // Add Player
+  // Add Game
   AddGame(data: any): Observable<any> {
     let API_URL = `${this.endpoint}/add-game`;
     return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
@@ -63,7 +64,7 @@ export class ApiService {
 
   // Gets games
   GetGames() {
-    return this.http.get(`${this.endpoint}`);
+    return this.http.get(`${this.endpointgames}`);
   }
 
   // Used for retrieving Game info in edits

@@ -8,6 +8,7 @@ import { JoinGameComponent } from "./components/join-game/join-game.component";
 import { AdminLoginComponent } from "./components/admin-login/admin-login.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { GamesListComponent } from "./components/games-list/games-list.component";
+import { ViewGamesComponent } from "./components/view-games/view-games.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "player-rankings" },
@@ -33,7 +34,8 @@ const routes: Routes = [
     path: "games-list",
     component: GamesListComponent,
     canActivate: [AuthGuard]
-  }
+  },
+ 
 ];
 
 @NgModule({

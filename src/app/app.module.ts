@@ -24,7 +24,7 @@ import { GamesListComponent } from "./components/games-list/games-list.component
     PlayerRankingsComponent,
     JoinGameComponent,
     AdminLoginComponent,
-    GamesListComponent
+    GamesListComponent,
   ],
   imports: [
     BrowserModule,

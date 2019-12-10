@@ -9,6 +9,9 @@ let Game = new Schema({
   game_rating: {
     type: Number
   },
+  genre:{
+    type: String
+  },
   plaftorm: {
     type: String
   },

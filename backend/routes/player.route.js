@@ -27,16 +27,7 @@ playerRoute.route('/').get((req, res) => {
   })
 })
 
-// Get single student
-playerRoute.route('/read-player/:id').get((req, res) => {
-  Player.findById(req.params.id, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
-})
+
 
 
 // Update student

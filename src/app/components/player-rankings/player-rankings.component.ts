@@ -4,7 +4,6 @@ import { ApiService } from "./../../shared/api.service";
 import { MatPaginator, MatTableDataSource, MatSort } from "@angular/material";
 
 
-
 @Component({
   selector: "app-player-rankings",
   templateUrl: "./player-rankings.component.html",
@@ -56,7 +55,7 @@ export class PlayerRankingsComponent implements OnInit {
   applyFilter(filterValue: string) {
     const tableFilters = [];
     tableFilters.push({
-      id: 'player_name',
+      id: 'player_name', 
       value: filterValue
     });
 
@@ -66,5 +65,14 @@ export class PlayerRankingsComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  //Attempt to make filter work multiple parameters instead of just name
+  /*
+  newFilter(filter: any){
+    const filteredData = this.PlayerData.filter(name => name.player_name.includes(filter) || name.favorite_game.includes(filter));
+    console.log(filteredData);
+    this.dataSource.filter = JSON.stringify(filteredData);
+  }*/
+
 }
 

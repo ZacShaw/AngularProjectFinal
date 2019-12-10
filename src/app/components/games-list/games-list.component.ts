@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { Game } from "./../../shared/game";
 import { ApiService } from "./../../shared/api.service";
-import { MatPaginator, MatTableDataSource } from "@angular/material";
+import { MatPaginator, MatTableDataSource, MatSort } from "@angular/material";
 
 @Component({
   selector: 'app-games-list',
@@ -14,16 +14,16 @@ export class GamesListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = [
     "game_name",
+    "platform",
+    "genre",
     "game_rating",
-    "plaftorm",
     "publisher",
     "release",
-    "game_status",
-    "action"
+    "game_status"
   ];
 
   constructor(private gameApi: ApiService) {
-    this.gameApi.GetPlayers().subscribe(data => {
+    this.gameApi.GetGames().subscribe(data => {
       this.GameData = data;
       console.log(data);
       this.dataSource = new MatTableDataSource<Game>(this.GameData);

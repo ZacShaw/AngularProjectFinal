@@ -1,4 +1,12 @@
-Zac Shaw 101074878 Collins
+Zac Shaw 101074878 Collins Mbuton 101175934
+
+login info:
+    username:admin
+    password:admin123
+
+
+
+
 # AngularProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
