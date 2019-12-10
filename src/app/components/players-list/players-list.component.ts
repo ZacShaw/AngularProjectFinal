@@ -1,8 +1,8 @@
 import { Player } from "./../../shared/player";
 import { ApiService } from "./../../shared/api.service";
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { MatPaginator, MatTableDataSource } from "@angular/material";
 import { Router, ActivatedRoute } from "@angular/router";
+import { MatPaginator, MatTableDataSource, MatSort } from "@angular/material";
 
 @Component({
   selector: "app-players-list",
@@ -13,6 +13,7 @@ export class PlayersListComponent implements OnInit {
   PlayerData: any = [];
   dataSource: MatTableDataSource<Player>;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   displayedColumns: string[] = [
     "player_name",
     "player_rank",
@@ -29,11 +30,38 @@ export class PlayersListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Player>(this.PlayerData);
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.dataSource.filterPredicate = 
+        (data: Player, filtersJson: string) => {
+            const matchFilter = [];
+            const filters = JSON.parse(filtersJson);
+      
+            filters.forEach(filter => {
+              const val = data[filter.id] === null ? '' : data[filter.id];
+              matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
+            });
+              return matchFilter.every(Boolean);
+          };
+        
       }, 0);
     });
   }
 
   ngOnInit() {}
+
+  applyFilter(filterValue: string) {
+    const tableFilters = [];
+    tableFilters.push({
+      id: 'player_name',
+      value: filterValue
+    });
+
+
+    this.dataSource.filter = JSON.stringify(tableFilters);
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   deletePlayer(index: number, e) {
     if (window.confirm("Are you sure")) {

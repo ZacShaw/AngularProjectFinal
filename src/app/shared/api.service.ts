@@ -30,7 +30,7 @@ export class ApiService {
     return this.http.get(`${this.endpoint}`);
   }
 
-  // Get player
+  // Used for retrieving Player info in edits, join games
   GetPlayer(id): Observable<any> {
     let API_URL = `${this.endpoint}/read-player/${id}`;
     return this.http.get(API_URL, { headers: this.headers }).pipe(
@@ -53,6 +53,28 @@ export class ApiService {
   DeletePlayer(id): Observable<any> {
     var API_URL = `${this.endpoint}/delete-player/${id}`;
     return this.http.delete(API_URL).pipe(catchError(this.errorMgmt));
+  }
+
+  // Add Player
+  AddGame(data: any): Observable<any> {
+    let API_URL = `${this.endpoint}/add-game`;
+    return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+  }
+
+  // Gets games
+  GetGames() {
+    return this.http.get(`${this.endpoint}`);
+  }
+
+  // Used for retrieving Game info in edits
+  GetGame(id): Observable<any> {
+    let API_URL = `${this.endpoint}/read-game/${id}`;
+    return this.http.get(API_URL, { headers: this.headers }).pipe(
+      map((res: Response) => {
+        return res || {};
+      }),
+      catchError(this.errorMgmt)
+    );
   }
 
   // Admin login
